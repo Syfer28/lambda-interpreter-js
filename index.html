@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lambda Interpreter - Task 1</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            font-family: monospace;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background: #eee;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        #output {
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            min-height: 50px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .step {
+            margin-bottom: 5px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .final {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lambda Calculus Interpreter</h1>
+
+    <div class="input-section">
+        <label>Enter Lambda Term:</label><br>
+        <textarea id="input" placeholder="(\x.\y.x) a b"></textarea><br>
+        <button id="runBtn">Run Reduction</button>
+    </div>
+
+    <strong>Evaluation Steps:</strong>
+    <div id="output">Results will appear here...</div>
+
+    <script type="module">
+        import { parse } from './parser.js';
+        import { Evaluator } from './evaluator.js';
+
+        document.getElementById('runBtn').addEventListener('click', () => {
+            const input = document.getElementById('input').value;
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+            try {
+                const ast = parse(input);
+                const evaler = new Evaluator();
+                evaler.evaluate(ast);
+
+                evaler.stepLog.forEach((step, i) => {
+                    const line = document.createElement('div');
+                    line.className = 'step';
+                    if (i === evaler.stepLog.length - 1) line.className += ' final';
+                    line.innerText = `Step ${i}: ${step}`;
+                    outputDiv.appendChild(line);
+                });
+            } catch (e) {
+                outputDiv.innerHTML = `<span class="error">Error: ${e.message}</span>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
