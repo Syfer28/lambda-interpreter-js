@@ -21,7 +21,7 @@ This is a functional interpreter for the Lambda Calculus implemented in JavaScri
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/Syfer28/lambda-interpreter-js.git](https://github.com/Syfer28/lambda-interpreter-js.git)
+   git clone https://github.com/Syfer28/lambda-interpreter-js.git
 2. Navigate to the project folder:
     cd lambda-interpreter-js
 3. Run the interpreter:
