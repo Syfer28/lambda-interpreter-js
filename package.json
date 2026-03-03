@@ -1,0 +1,21 @@
+{
+  "name": "lambda-interpreter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Syfer28/lambda-interpreter-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Syfer28/lambda-interpreter-js/issues"
+  },
+  "homepage": "https://github.com/Syfer28/lambda-interpreter-js#readme",
+  "description": ""
+}
