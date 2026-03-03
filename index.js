@@ -1,12 +1,13 @@
 import { parse } from './parser.js';
+import { Evaluator } from './evaluator.js';
 
-// Test case: (\x. x) y
-const input = "(\\x. x) y";
-try {
-    const ast = parse(input);
-    console.log("Successfully parsed AST:");
-    console.log(JSON.stringify(ast, null, 2));
-    console.log("String representation:", ast.toString());
-} catch (e) {
-    console.error("Parsing error:", e.message);
-}
+const input = "(\\x. \\y. x) a b"; // standard K-combinator test
+const ast = parse(input);
+const evaler = new Evaluator();
+
+console.log("Starting reduction for:", input);
+evaler.evaluate(ast);
+
+evaler.stepLog.forEach((step, index) => {
+    console.log(`Step ${index}: ${step}`);
+});
