@@ -1,5 +1,4 @@
 # Extended Lambda Calculus Interpreter
-
 This is a functional interpreter for the Lambda Calculus implemented in JavaScript (Node.js).
 
 ## Features
@@ -23,12 +22,19 @@ This is a functional interpreter for the Lambda Calculus implemented in JavaScri
 1. Clone the repository:
    ```bash
    git clone [https://github.com/Syfer28/lambda-interpreter-js.git](https://github.com/Syfer28/lambda-interpreter-js.git)
-
 2. Navigate to the project folder:
     cd lambda-interpreter-js
-
 3. Run the interpreter:
     node index.js
+
+## How to Run the Web UI
+If you have Node.js installed, you can use a simple static server:
+1. Install `serve`:
+   ```bash
+   npm install -g serve
+2. Run it in the project folder:
+    serve .
+3. Open http://localhost:3000 in your browser.
 
 ### Usage
 The interpreter accepts lambda terms in the following format:
